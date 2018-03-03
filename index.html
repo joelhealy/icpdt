@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+  <title>ICP DT Mockup</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+<!-- Tab links -->
+  <div class="tab">
+    <button class="tablinks active" onclick="openTab(event, 'import-tab')">Import PRN File</button>
+    <button class="tablinks" onclick="openTab(event, 'edit-tab')">Edit Sample Information</button>
+    <button class="tablinks" onclick="openTab(event, 'calculate-tab')">Calculate/Export Results</button>
+    <button class="tablinks" onclick="openTab(event, 'misc-tab')">Edit Spike Solutions, MDLs, etc.</button>
+  </div>
+  
+  <!-- Tab content -->
+  <div id="import-tab" class="tabcontent" style="display: block">
+    <h3>Import the PRN File</h3>
+    <form>
+      <!-- Instrument dropdownlist -->
+      <select>
+        <option value="EAQ108">EAQ108</option>
+        <option value="EAQ104">EAQ104</option>
+        <option value="EAQ109">EAQ109</option>
+        <option value="EAQ39">EAQ39</option>
+        <option value="EAQ41">EAQ41</option>
+        <option value="EAQ59">EAQ59</option>
+      </select>
+      <!-- Filename textbox -->
+      <input type="text" placeholder="filename" />
+      <!-- Matrix dropdownlist -->
+      <select>
+        <option value="Air">Air</option>
+        <option value="Solid">Solid</option>
+        <option value="Tissue">Tissue</option>
+        <option value="Waste">Waste</option>
+        <option value="Water">Water</option>
+      </select>
+      <!-- Method dropdownlist -->
+      <select>
+        <option value="RLAB Method 3122.3E">RLAB Method 3122.3E</option>
+        <option value="RLAB Method 3122.3F">RLAB Method 3122.3F</option>
+        <option value="RLAB Method 3122.3F Dis">RLAB Method 3122.3F Dis</option>
+        <option value="RLAB Method 3122.3F TCLP">RLAB Method 3122.3F TCLP</option>
+      </select>
+      <!-- Initials textbox -->
+      <input type="text" placeholder="jhh" />
+      <!-- Import Button -->
+      <input type="submit" value="Import" />
+    </form>
+  </div>
+  
+  <div id="edit-tab" class="tabcontent">
+    <h3>Edit Sample Information</h3>
+  </div>
+  
+  <div id="calculate-tab" class="tabcontent">
+    <h3>Calculate/Export Results</h3>
+  </div> 
+
+  <div id="misc-tab" class="tabcontent">
+    <h3>Edit Spike Solutions, MDLS, etc.</h3>
+  </div> 
+
+  <script src="scripts/myscript.js"></script>
+</body>
+</html>
+
