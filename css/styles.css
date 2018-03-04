@@ -1,4 +1,18 @@
- /* Style the tab */
+ /* Reset default box behavior */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Give page a fixed width layout */
+.page {
+    width: 900px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Style the tab */
 .tab {
     overflow: hidden;
     /* border: 1px solid #ccc; */
@@ -13,6 +27,7 @@
     outline: none;
     cursor: pointer;
     border: 1px solid #ccc;
+    border-bottom: none;
     padding: 3px 16px;
     transition: 0.3s;
 }
@@ -36,3 +51,119 @@
     border-top: none;
     height: 500px;
 } 
+
+#import-prn-labels {
+    height: 400px;
+    width: 15%;
+    float: left;
+}
+
+#import-prn-input {
+    height: 400px;
+    width: 40%;
+    float: left;
+}
+
+#import-prn-about {
+    height: 400px;
+    width: 40%;
+    float: left;
+}
+
+#import-prn-labels * {
+    display: block;
+    text-align: right;
+}
+
+#import-prn-input * {
+    display: block;
+}
+
+select, input {
+    margin: 12px 0px 15px 0px;
+    padding: 1px 5px 1px 10px;
+}
+
+label {
+    margin: 12px 0px 15px 0px;
+    padding: 1px 5px;
+    font-size:small;
+}
+
+#import-button {
+    margin: 30px 0px;
+    padding: 1px 10px;
+}
+
+#about-box {
+    border: 1px solid black;
+    margin: 150px 50px 150px 0px;
+}
+
+#about-box p {
+    text-align: center;
+    font-size: small;
+    padding: 10px 15px;
+}
+
+#initials {
+    width: 50px;
+}
+
+.sample-info-table {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr) 10fr;
+    grid-template-rows: 40px 20px;
+    grid-auto-rows: 20px;
+    height: 400px;
+}
+
+.sample-info-item {
+    font-size: small;
+    border: 1px solid lightgray;
+}
+
+.results-table {
+    display: grid;
+    grid-template-columns: repeat(4, 50px) 150px repeat(3, 100px) 75px repeat(2, 100px) 300px 75px 100px repeat(4, 75px);
+    grid-template-rows: 40px 20px;
+    grid-auto-rows: 20px;
+    height: 400px;
+}
+
+.results-item {
+    font-size: small;
+    border: 1px solid lightgray;
+}
+
+.misc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 300px 100px;
+    grid-gap: 40px;
+    height: 450px;
+    padding: 25px 20px 0px 20px;
+}
+
+.misc-grid-section {
+    border: 1px solid gray;
+    text-align: center;
+    padding: 20px;
+}
+
+.misc-grid-section > button {
+    margin: 30px 0px 10px 0px;
+    padding: 0px 10px;
+}
+
+.misc-section {
+    grid-column: 1 / 4;
+}
+
+.misc-sub-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 100px;
+    margin: 15px 0px 0px 0px;
+}
+

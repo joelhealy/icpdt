@@ -5,62 +5,315 @@
   <link rel="stylesheet" href="css/styles.css"/>
 </head>
 <body>
-<!-- Tab links -->
-  <div class="tab">
-    <button class="tablinks active" onclick="openTab(event, 'import-tab')">Import PRN File</button>
-    <button class="tablinks" onclick="openTab(event, 'edit-tab')">Edit Sample Information</button>
-    <button class="tablinks" onclick="openTab(event, 'calculate-tab')">Calculate/Export Results</button>
-    <button class="tablinks" onclick="openTab(event, 'misc-tab')">Edit Spike Solutions, MDLs, etc.</button>
-  </div>
-  
-  <!-- Tab content -->
-  <div id="import-tab" class="tabcontent" style="display: block">
-    <h3>Import the PRN File</h3>
-    <form>
-      <!-- Instrument dropdownlist -->
-      <select>
-        <option value="EAQ108">EAQ108</option>
-        <option value="EAQ104">EAQ104</option>
-        <option value="EAQ109">EAQ109</option>
-        <option value="EAQ39">EAQ39</option>
-        <option value="EAQ41">EAQ41</option>
-        <option value="EAQ59">EAQ59</option>
-      </select>
-      <!-- Filename textbox -->
-      <input type="text" placeholder="filename" />
-      <!-- Matrix dropdownlist -->
-      <select>
-        <option value="Air">Air</option>
-        <option value="Solid">Solid</option>
-        <option value="Tissue">Tissue</option>
-        <option value="Waste">Waste</option>
-        <option value="Water">Water</option>
-      </select>
-      <!-- Method dropdownlist -->
-      <select>
-        <option value="RLAB Method 3122.3E">RLAB Method 3122.3E</option>
-        <option value="RLAB Method 3122.3F">RLAB Method 3122.3F</option>
-        <option value="RLAB Method 3122.3F Dis">RLAB Method 3122.3F Dis</option>
-        <option value="RLAB Method 3122.3F TCLP">RLAB Method 3122.3F TCLP</option>
-      </select>
-      <!-- Initials textbox -->
-      <input type="text" placeholder="jhh" />
-      <!-- Import Button -->
-      <input type="submit" value="Import" />
-    </form>
-  </div>
-  
-  <div id="edit-tab" class="tabcontent">
-    <h3>Edit Sample Information</h3>
-  </div>
-  
-  <div id="calculate-tab" class="tabcontent">
-    <h3>Calculate/Export Results</h3>
-  </div> 
+  <div class="page">
+    <!-- Header -->
+    <div class="header">
+      <p>&nbsp;</p>
+    </div>
+    <!-- Tab links -->
+    <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'import-tab')">Import PRN File</button>
+      <button class="tablinks" onclick="openTab(event, 'edit-tab')">Edit Sample Information</button>
+      <button class="tablinks" onclick="openTab(event, 'calculate-tab')">Calculate/Export Results</button>
+      <button class="tablinks active" onclick="openTab(event, 'misc-tab')">Edit Spike Solutions, MDLs, etc.</button>
+    </div>
+    
+    <!-- Tab content -->
+    <div id="import-tab" class="tabcontent" style="display: none">
+      <div id="import-prn-labels">
+        <label for="instrument-id">Instrument ID:</label>
+        <label for="filename">File Name:</label>
+        <label for="matrix">Matrix:</label>
+        <label for="method">Method:</label>
+        <label for="initials">Analyst Initials:</label>
+      </div>
+      <div id="import-prn-input">
+        <form>
+          <!-- Instrument dropdownlist -->
+          <select id="instrument-id">
+            <option value="EAQ108">EAQ108</option>
+            <option value="EAQ104">EAQ104</option>
+            <option value="EAQ109">EAQ109</option>
+            <option value="EAQ39">EAQ39</option>
+            <option value="EAQ41">EAQ41</option>
+            <option value="EAQ59">EAQ59</option>
+          </select>
+          <!-- Filename textbox -->
+          <input id="filename" type="text" placeholder="filename" />
+          <!-- Matrix dropdownlist -->
+          <select id="matrix">
+            <option value="Air">Air</option>
+            <option value="Solid">Solid</option>
+            <option value="Tissue">Tissue</option>
+            <option value="Waste">Waste</option>
+            <option value="Water">Water</option>
+          </select>
+          <!-- Method dropdownlist -->
+          <select id="method">
+            <option value="RLAB Method 3122.3E">RLAB Method 3122.3E</option>
+            <option value="RLAB Method 3122.3F">RLAB Method 3122.3F</option>
+            <option value="RLAB Method 3122.3F Dis">RLAB Method 3122.3F Dis</option>
+            <option value="RLAB Method 3122.3F TCLP">RLAB Method 3122.3F TCLP</option>
+          </select>
+          <!-- Initials textbox -->
+          <input id="initials" type="text" placeholder="jhh" />
+          <!-- Import Button -->
+          <input id="import-button" type="submit" value="Import" />
+        </form>
+      </div>
+      <div id="import-prn-about">
+        <div id="about-box">
+          <p>Version: 1.6.1</p>
+          <p>This version of ICP DT will correctly process
+          Solid, Tissue, Waste (solid and liquid) and
+          Water samples plus TCLP of any matrix, but
+          not Air or Wipe samples.</p>
+          <p>PRN files generated by Syngistix must be
+          converted to ANSI before being processed.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div id="edit-tab" class="tabcontent" style="display: none">
+      <div>
+        <!-- Header -->
+        <div class="header">
+          <label>Batch ID:</label>
+          <!-- Batch ID dropdownlist -->
+          <select id="batch-id">
+            <option value="4428">4428</option>
+            <option value="4427">4427</option>
+            <option value="4426">4426</option>
+            <option value="4425">4425</option>
+            <option value="4424">4424</option>
+            <option value="4423">4423</option>
+          </select>
+        </div>
+        <!-- Sample Information Table -->
+        <div class="sample-info-table">
+          <!-- Header Row -->
+          <div class="sample-info-item">Batch ID</div>
+          <div class="sample-info-item">ASR Number</div>
+          <div class="sample-info-item">Sample Number</div>
+          <div class="sample-info-item">QC Code</div>
+          <div class="sample-info-item">Initial Wt/Vol</div>
+          <div class="sample-info-item">Diluted Volume</div>
+          <div class="sample-info-item">Solids Ratio</div>
+          <div class="sample-info-item">Spike Solution ID</div>
+          <!-- New Row -->
+          <div class="sample-info-item">4428</div>
+          <div class="sample-info-item">6684</div>
+          <div class="sample-info-item">21</div>
+          <div class="sample-info-item">__</div>
+          <div class="sample-info-item">1.008</div>
+          <div class="sample-info-item">1</div>
+          <div class="sample-info-item">1.02</div>
+          <div class="sample-info-item"></div>
+          <!-- New Row -->
+          <div class="sample-info-item">4428</div>
+          <div class="sample-info-item">6684</div>
+          <div class="sample-info-item">21</div>
+          <div class="sample-info-item">MS</div>
+          <div class="sample-info-item">1.011</div>
+          <div class="sample-info-item">1</div>
+          <div class="sample-info-item">1.02</div>
+          <div class="sample-info-item">1 mL QCS21 + 1 ml SPEX Common + 1ml Ag</div>
+          <!-- New Row -->
+          <div class="sample-info-item">4428</div>
+          <div class="sample-info-item">6684</div>
+          <div class="sample-info-item">21</div>
+          <div class="sample-info-item">MSD</div>
+          <div class="sample-info-item">1.01</div>
+          <div class="sample-info-item">1</div>
+          <div class="sample-info-item">1.02</div>
+          <div class="sample-info-item">1 mL QCS21 + 1 ml SPEX Common + 1ml Ag</div>
+          <!-- New Row -->
+          <div class="sample-info-item">4428</div>
+          <div class="sample-info-item">6684</div>
+          <div class="sample-info-item">22</div>
+          <div class="sample-info-item">__</div>
+          <div class="sample-info-item">1.017</div>
+          <div class="sample-info-item">1</div>
+          <div class="sample-info-item">1.087</div>
+          <div class="sample-info-item"></div>
+        </div>
+        <!-- Footer -->
+        <div class="footer">
+          <button>Save and Update</button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="calculate-tab" class="tabcontent" style="display: none">
+      <div>
+        <!-- Header -->
+        <div class="header">
+          <label>Instrument ID:</label>
+          <!-- Instrument dropdownlist -->
+          <select id="instrument-id">
+            <option value="EAQ108">EAQ108</option>
+            <option value="EAQ104">EAQ104</option>
+            <option value="EAQ109">EAQ109</option>
+            <option value="EAQ39">EAQ39</option>
+            <option value="EAQ41">EAQ41</option>
+            <option value="EAQ59">EAQ59</option>
+          </select>
+          <label>Batch ID:</label>
+          <!-- Batch ID dropdownlist -->
+          <select id="batch-id">
+            <option value="4428">4428</option>
+            <option value="4427">4427</option>
+            <option value="4426">4426</option>
+            <option value="4425">4425</option>
+            <option value="4424">4424</option>
+            <option value="4423">4423</option>
+          </select>
+          <label>File Name:</label>
+          <input type="text" placeholder="export filename" />
+          <button>Export</button>
+        </div>
+        <!-- Results Table -->
+        <div class="results-table">
+          <!-- Header Row -->
+          <div class="results-item">ASR Number</div>
+          <div class="results-item">Sample Number</div>
+          <div class="results-item">QC Code</div>
+          <div class="results-item">Matrix</div>
+          <div class="results-item">Method</div>
+          <div class="results-item">Analyte Name</div>
+          <div class="results-item">Raw Result</div>
+          <div class="results-item">Final Result</div>
+          <div class="results-item">Detection ID</div>
+          <div class="results-item">RL</div>
+          <div class="results-item">Concentration Spiked</div>
+          <div class="results-item">Spike Solution ID</div>
+          <div class="results-item">Element</div>
+          <div class="results-item">Instrument Result</div>
+          <div class="results-item">Initial Wt/Vol</div>
+          <div class="results-item">Diluted Volume</div>
+          <div class="results-item">Solids Ratio</div>
+          <div class="results-item">MDL</div>
+          <!-- Header Row -->
+          <div class="results-item">6684</div>
+          <div class="results-item">21</div>
+          <div class="results-item">__</div>
+          <div class="results-item">Solid</div>
+          <div class="results-item">RLAB Method 3122.3F</div>
+          <div class="results-item">Silver</div>
+          <div class="results-item">0.795</div>
+          <div class="results-item">2.0</div>
+          <div class="results-item">U</div>
+          <div class="results-item">2.0</div>
+          <div class="results-item"></div>
+          <div class="results-item"></div>
+          <div class="results-item">Ag</div>
+          <div class="results-item">0.795</div>
+          <div class="results-item">1.008</div>
+          <div class="results-item">1</div>
+          <div class="results-item">1.02</div>
+          <div class="results-item">2.0</div>
+          <!-- Header Row -->
+          <div class="results-item">6684</div>
+          <div class="results-item">21</div>
+          <div class="results-item">MS</div>
+          <div class="results-item">Solid</div>
+          <div class="results-item">RLAB Method 3122.3F</div>
+          <div class="results-item">Silver</div>
+          <div class="results-item">26.02</div>
+          <div class="results-item">26.0</div>
+          <div class="results-item"></div>
+          <div class="results-item">2.0</div>
+          <div class="results-item">20.2</div>
+          <div class="results-item">1 ml QCS21 + 1ml SPEX Common + 1ml Ag</div>
+          <div class="results-item">Ag</div>
+          <div class="results-item">26.02</div>
+          <div class="results-item">1.011</div>
+          <div class="results-item">1</div>
+          <div class="results-item">1.02</div>
+          <div class="results-item">2.0</div>
+          <!-- Header Row -->
+          <div class="results-item">6684</div>
+          <div class="results-item">21</div>
+          <div class="results-item">MSD</div>
+          <div class="results-item">Solid</div>
+          <div class="results-item">RLAB Method 3122.3F</div>
+          <div class="results-item">Silver</div>
+          <div class="results-item">26.49</div>
+          <div class="results-item">26.5</div>
+          <div class="results-item"></div>
+          <div class="results-item">2.0</div>
+          <div class="results-item">20.2</div>
+          <div class="results-item">1 ml QCS21 + 1ml SPEX Common + 1ml Ag</div>
+          <div class="results-item">Ag</div>
+          <div class="results-item">26.49</div>
+          <div class="results-item">1.01</div>
+          <div class="results-item">1</div>
+          <div class="results-item">1.02</div>
+          <div class="results-item">2.0</div>
+          <!-- Header Row -->
+          <div class="results-item">6684</div>
+          <div class="results-item">22</div>
+          <div class="results-item">__</div>
+          <div class="results-item">Solid</div>
+          <div class="results-item">RLAB Method 3122.3F</div>
+          <div class="results-item">Silver</div>
+          <div class="results-item">0.953</div>
+          <div class="results-item">2.1</div>
+          <div class="results-item">U</div>
+          <div class="results-item">2.1</div>
+          <div class="results-item"></div>
+          <div class="results-item"></div>
+          <div class="results-item">Ag</div>
+          <div class="results-item">0.953</div>
+          <div class="results-item">1.017</div>
+          <div class="results-item">1</div>
+          <div class="results-item">1.087</div>
+          <div class="results-item">2.1</div>
+        </div>
+        <!-- Footer -->
+        <div class="footer">
+          <label>Report Down To:</label>
+          <input type="radio" id="report-to-RL" name="report-down-to" value="RL">
+          <label for="report-to-RL">RL</label>
+          <input type="radio" id="report-to-MDL" name="report-down-to" value="MDL">
+          <label for="report-to-MDL">MDL</label>
+          <button>Calculate</button>
+          <button>Report</button>
+        </div>
+      </div>
+    </div> 
 
-  <div id="misc-tab" class="tabcontent">
-    <h3>Edit Spike Solutions, MDLS, etc.</h3>
-  </div> 
+    <div id="misc-tab" class="tabcontent" style="display: block">
+      <div class="misc-grid">
+        <div class="misc-grid-section">
+          <h3>Spike Solutions</h3>
+          <button>Create New Spike Solution</button>
+          <button>Edit Spike Solution</button>
+        </div>
+        <div class="misc-grid-section">
+          <h3>Analysis Info</h3>
+          <button>Edit Method/Analysis Info</button>
+          <button>Edit Analysis Analytes</button>
+        </div>
+        <div class="misc-grid-section">
+          <h3>Samples & Results</h3>
+          <button>Delete Import Batches</button>
+        </div>
+        <div class="misc-grid-section misc-section">
+          <div class="misc-sub-grid">
+            <h3>Miscellaneous</h3>
+            <button>Edit Instrument Info</button>
+            <button>Change Password</button>
+        </div>
+        </div>
+      </div>
+    </div> 
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>&nbsp;</p>
+    </div>
+  </div>
 
   <script src="scripts/myscript.js"></script>
 </body>
