@@ -1,0 +1,169 @@
+ /* Reset default box behavior */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Give page a fixed width layout */
+.page {
+    width: 900px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    /* border: 1px solid #ccc; */
+    border: none;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    background-color: inherit;
+    float: left;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    padding: 3px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #fff;
+    border-bottom: none;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    height: 500px;
+} 
+
+select, input {
+    margin: 12px 0px 15px 0px;
+    padding: 1px 5px 1px 10px;
+}
+
+label {
+    margin: 12px 0px 15px 0px;
+    padding: 1px 5px;
+    font-size:small;
+}
+
+.import-prn-grid {
+    display: grid;
+    grid-template-columns: 125px 1fr 2fr;
+}
+
+#import-instrument-id {
+    grid-column-end: span 2;
+    width: 125px;
+}
+
+#import-filename {
+    grid-column-end: span 2;
+    width: 700px;
+}
+
+#import-matrix {
+    width: 125px;
+}
+
+#initials {
+    width: 50px;
+}
+
+#import-button {
+    margin: 30px 0px;
+    width: 100px;
+    grid-column-start: 2;
+}
+
+#about-box {
+    border: 1px solid gray;
+    margin: 100px 100px;
+    grid-column: 3 / 4;
+    grid-row: 3 / 8;
+    width: 275px;
+}
+
+#about-box p {
+    text-align: center;
+    font-size: 12px;
+    padding: 10px 15px;
+}
+
+.import-prn-grid label {
+    text-align: right;
+}
+
+.sample-info-table {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr) 10fr;
+    grid-template-rows: 40px 20px;
+    grid-auto-rows: 20px;
+    height: 400px;
+}
+
+.sample-info-item {
+    font-size: small;
+    border: 1px solid lightgray;
+}
+
+.results-table {
+    display: grid;
+    grid-template-columns: repeat(4, 50px) 150px repeat(3, 100px) 75px repeat(2, 100px) 300px 75px 100px repeat(4, 75px);
+    grid-template-rows: 40px 20px;
+    grid-auto-rows: 20px;
+    height: 400px;
+}
+
+.results-item {
+    font-size: small;
+    border: 1px solid lightgray;
+}
+
+.misc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 300px 100px;
+    grid-gap: 40px;
+    height: 450px;
+    padding: 25px 20px 0px 20px;
+}
+
+.misc-grid-section {
+    border: 1px solid gray;
+    text-align: center;
+    padding: 20px;
+}
+
+.misc-grid-section > button {
+    margin: 30px 0px 10px 0px;
+    padding: 0px 10px;
+}
+
+.misc-section {
+    grid-column: 1 / 4;
+}
+
+.misc-sub-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 100px;
+    margin: 15px 0px 0px 0px;
+}
+
