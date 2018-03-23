@@ -20,4 +20,26 @@ function openTab(evt, tabName) {
 } 
 
 
+var input = document.querySelector('#file-input');
+
+// Hide the input (type="file") element because we can't control style
+input.style.opacity = 0;
+
+// Update the readonly filename textbox when input(type="file") changes
+input.addEventListener('change', function() {
+    document
+        .getElementById("import-filename")
+        .value = input.files[0].name 
+            + " (size: " + returnFileSize(input.files[0].size) + ")";
+});
+
+function returnFileSize(number) {
+    if (number < 1024) {
+        return number + 'bytes';
+    } else if (number > 1024 && number < 1048576) {
+        return (number/1024).toFixed(1) + 'KB';
+    } else if (number > 1048576) {
+        return (number/1048576).toFixed(1) + 'MB';
+    }
+}
 

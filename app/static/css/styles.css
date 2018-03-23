@@ -94,9 +94,9 @@ label {
 
 #about-box {
     border: 1px solid gray;
-    margin: 100px 100px;
+    margin: 10px 100px 0px 100px;
     grid-column: 3 / 4;
-    grid-row: 3 / 8;
+    grid-row: 3 / 7;
     width: 275px;
 }
 
@@ -165,5 +165,23 @@ label {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 100px;
     margin: 15px 0px 0px 0px;
+}
+
+#filename-label {
+    background-color: #ddd;
+    margin-right: 5px;
+    margin-left: 35px;
+    padding-right: 10px;
+    border: 1px solid #aaa;
+}
+
+#import-tab-flash {
+    grid-column: 1 / 4;
+    color: red;
+    margin-left: 50px;
+}
+
+#edit-tab-flash {
+    margin-left: 25px;
 }
 
